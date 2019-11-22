@@ -123,13 +123,13 @@ for i in range(df.shape[0]):
     y_motion_acceleration    = df.iloc[i, 1] - y_gravity_acceleration
     z_motion_acceleration    = df.iloc[i, 2] - z_gravity_acceleration
 
-    x_speed = (((x_motion_acceleration + x_old_accel) * dt) / 2)
-    y_speed = (((y_motion_acceleration + y_old_accel) * dt) / 2)
-    z_speed = (((z_motion_acceleration + z_old_accel) * dt) / 2)
+    x_speed = (((x_motion_acceleration + x_old_accel) * df.iloc[i, 6]) / 2)
+    y_speed = (((y_motion_acceleration + y_old_accel) * df.iloc[i, 6]) / 2)
+    z_speed = (((z_motion_acceleration + z_old_accel) * df.iloc[i, 6]) / 2)
 
-    x_difference = (((x_speed + x_old_speed) * dt) / 2)
-    y_difference = (((y_speed + y_old_speed) * dt) / 2)
-    z_difference = (((z_speed + z_old_speed) * dt) / 2)
+    x_difference = (((x_speed + x_old_speed) * df.iloc[i, 6]) / 2)
+    y_difference = (((y_speed + y_old_speed) * df.iloc[i, 6]) / 2)
+    z_difference = (((z_speed + z_old_speed) * df.iloc[i, 6]) / 2)
 
     x_old_accel = x_motion_acceleration
     y_old_accel = y_motion_acceleration
