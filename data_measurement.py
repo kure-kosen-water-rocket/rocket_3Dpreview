@@ -1,6 +1,6 @@
 import smbus
 import math
-from time import sleep
+from time
 import signal
 import csv
 
@@ -67,16 +67,16 @@ with open('measurement.csv','w') as measurement_file:                           
         writer.writeheader()
 
 time = 0
-dt   = 0.01
+dt   = 0
 calculate_time = 10
 gyroscope     = [0, 0, 0]
 accelerometer = [0, 0, 0]
 
 while 1:
-    x_gyro,  y_gyro,  z_gyro  = get_gyro_data_deg()
+    start = time.time()
 
+    x_gyro,  y_gyro,  z_gyro  = get_gyro_data_deg()
     x_accel, y_accel, z_accel = get_accel_data_g()
-    print(x_accel)
 
     with open('measurement.csv', 'a') as measurement_file:
         writer = csv.DictWriter(measurement_file, fieldnames=fieldnames)
@@ -85,11 +85,11 @@ while 1:
                          'z_accel':z_accel,
                          'x_gyro' :x_gyro ,
                          'y_gyro' :y_gyro ,
-                         'z_gyro' :z_gyro ,})
+                         'z_gyro' :z_gyro ,
+                         'dt'     :dt ,})
 
-    time += dt
+    dt = time.time() - start
 
-    if time > calculate_time:
+    total_time += dt
+    if total_time > calculate_time:
         break
-
-    sleep(dt)
